@@ -45,3 +45,24 @@ function closeInfo(){
 	hideViaClass("backBtn");
 	document.getElementById("backBtn").onclick = function() {}
 }
+
+function newDbBtn(){
+	hideViaClass("topRow");
+	hideViaClass("lowRow");
+	showViaClass("newDb");
+	hideViaClass("mainSubtitle");
+	showViaClass("newDbSubtitle");
+	showViaClass("backBtn");
+	document.getElementById("backBtn").onclick = function() {closeNewDb();}
+	document.getElementById("backBtn").focus();
+}
+
+function closeNewDb(){
+	showViaClass("topRow");
+	showViaClass("lowRow");
+	hideViaClass("newDb");
+	showViaClass("mainSubtitle");
+	hideViaClass("newDbSubtitle");
+	hideViaClass("backBtn");
+	document.getElementById("backBtn").onclick = function() {}
+}
