@@ -1,0 +1,140 @@
+body{
+	background-color: black;
+}
+
+#titleBar{
+	background-color: white;
+	position: fixed;
+	top: 0px;
+	left: 50%;
+	height: 100px; 
+	max-height: 98%; 
+	width:300px; /*just a width to start us off*/
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	text-align: center;
+}
+
+h1, h2{
+	margin: 10px;
+}
+
+
+.hidden{
+	display: none;
+}
+
+.popUps{
+	width: 100%;
+	height: 100%;
+	background-color: lime;
+	color: black;
+	position: absolute;
+}
+
+
+
+#mainPanel{
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	height: 300px; 
+	max-height: 98%; 
+	width:300px; /*narrow width to start us off - Design is Mobile First, so this will be ovveridden if needed*/
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+#mainPanel button{
+	width: 150px;
+	height: 150px;
+	font-size: 20pt;
+}
+
+#mainPanel button.red{
+	background-color: red;
+	color: white;
+}
+#mainPanel button.orange{
+	background-color: orange;
+	color: black;
+}
+#mainPanel button.yellow{
+	background-color: yellow;
+	color: black;
+}
+#mainPanel button.green{
+	background-color: green;
+	color: white;
+}
+#mainPanel button.blue{
+	background-color: blue;
+	color: white;
+}
+#mainPanel button.indigo{
+	background-color: indigo;
+	color: white;
+}
+#mainPanel button.violet{
+	background-color: violet;
+	color: black;
+}
+#mainPanel button.gold{
+	background-color: gold;
+	color: black;
+}
+#mainPanel button.silver{
+	background-color: silver;
+	color: black;
+}
+#mainPanel button.black{
+	background-color: black;
+	color: white;
+	font-weight: bold;
+}
+
+#bottomBtns{
+	position: fixed;
+	top: 400px;
+	left: 50%;
+	height: 60px; 
+	max-height: 98%; 
+	width:300px; /*just a width to start us off*/
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+#newTable{
+	width: 100%;
+	height: 100%;
+}
+
+.limeBorder{
+	/*Great for testing!*/
+	border: 1px solid lime;
+}
+
+
+
+/****NO DEFAULT STYLES AFTER THIS COMMENT!
+	MEDIA QUERIES IN SIZE ORDER ONLY
+		I'm using "mobile first design" principles (even if not always developing the mobile look first).
+		
+		Common breakpoints according to https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/
+		320px—480px: Mobile devices
+		481px—768px: iPads, Tablets
+		769px—1024px: Small screens, laptops  - 769px still seems tiny to me
+		1025px—1200px: Desktops, large screens
+		1201px and more— Extra large screens, TV
+****/
+@media only screen and (min-width: 290px) {
+/*Tiny width - It's very rare for modern devices to be narrower than this - Galaxy Fold is 280px when folded, Galaxy Siii is 360px, iPhone 4 was 320px, iPhone X is 375*/
+	/*{
+		border: 2px solid lime;
+	}*/
+}
+@media only screen and (min-width: 400px) {
+}
