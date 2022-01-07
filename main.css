@@ -17,12 +17,28 @@ body{
 	font-family: serif;
 }
 
+#backBtn{
+	position: relative;
+	left: -120px;
+	top: -70px;
+	height: 50px;
+	width: 50px;
+}
+
+#backBtn:focus{
+	outline: 4px dashed lime; /*Needs thicker outline, because of background*/
+}
+
+:focus{
+	outline: 3px dashed lime;
+}
+
 h1, h2{
 	margin: 10px;
 }
 
 
-.hidden{
+.hidden, .hideIfSmallScreen{
 	display: none;
 }
 
@@ -87,19 +103,18 @@ h1, h2{
 	background-color: gold;
 	color: black;
 }
-#mainPanel button.silver{
+.silver{
 	background-color: silver;
 	color: black;
 }
-#mainPanel button.black{
+.black{
 	background-color: black;
 	color: white;
-	font-weight: bold;
 }
 
 #bottomBtns{
 	position: fixed;
-	top: 400px;
+	top: 402px;
 	left: 50%;
 	height: 60px; 
 	max-height: 98%; 
@@ -117,6 +132,14 @@ h1, h2{
 .limeBorder{
 	/*Great for testing!*/
 	border: 1px solid lime;
+}
+
+#copyright{
+	position: fixed;
+	bottom: 0px;
+	right: 2px;
+	padding-bottom: 2px;
+	z-index: 9; /* Puts it in front of anything with a smaller z-index - I've set it to 10 so that that should mean we won't have to change it for a while */
 }
 
 

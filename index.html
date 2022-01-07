@@ -24,14 +24,17 @@
 		-->
 		<div id="titleBar" class="">
 			<h1>SQL GUI</h1>
-			<h2>by Phil Ganney</h2>
+			<h2 id="mainSubtitle" class="">by Phil Ganney</h2>
+			<h2 id="infoSubtitle" class="hidden">Info / license</h2>
+			<button type="button" id="backBtn" class="hidden black">Back</button>
 		</div>
 		<div id="mainPanel" class="limeBorder">
 			<div id="topRow" class=""><button type="button" id="" class="">New<br/>Database</button><button type="button" id="" class="">Load from<br/>browser</button></div>
-			<div id="midRow" class=""><button type="button" id="" class="">Paste<br/>SQL</button><button type="button" id="" class="">Info /<br/>license</button></div>
-			<div id="lowRow" class=""></div>
+			<div id="lowRow" class=""><button type="button" id="" class="">Paste<br/>SQL</button><button type="button" id="infoBtn" class="" onclick="infoBtn()">Info /<br/>license</button></div>
+			<div id="info" class="black hidden">Design databases and get the SQL to create those designs. Full Readme <a href="README.md">here</a><br/>Released under a MIT license (a popular license for open source software, where the developer has copyright but lets people use or copy the software, without any warranty, free of charge). Full license available <a href="LICENSE">here</a>.</div>
+			
 		</div>
 		<div id="bottomBtns" class="hidden"><button type="button" id="newTable" class="" onclick="newTable()">New Table</button></div>
-		
+		<div id="copyright" class="black">Copyright (c) 2022 Phil Ganney</div>
 	</body>
 </html>
