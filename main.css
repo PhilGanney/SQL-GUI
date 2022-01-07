@@ -14,6 +14,7 @@ body{
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
 	text-align: center;
+	font-family: serif;
 }
 
 h1, h2{
@@ -45,6 +46,7 @@ h1, h2{
 	-moz-transform: translateX(-50%);
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
+	font-family: sans-serif;
 }
 
 #mainPanel button{
@@ -65,7 +67,7 @@ h1, h2{
 	background-color: yellow;
 	color: black;
 }
-#mainPanel button.green{
+.green{
 	background-color: green;
 	color: white;
 }
