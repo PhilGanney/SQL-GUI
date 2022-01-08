@@ -1,4 +1,8 @@
-//btn.onclick = function() {}
+var globals = {
+	subtitlesStack: [],
+	
+}
+
 /*by "via class" we mean by removing or adding a class called "hidden" that sets css display to none
 Use in conjuction with hideViaClass(id) and a css class called "hidden".
 This is a slight change in how I've done this technique on other projects - there's no "showing" class
@@ -26,8 +30,7 @@ function toggleHideIfSmallScreen(id){
 
 
 function infoBtn(){
-	hideViaClass("topRow");
-	hideViaClass("lowRow");
+	hideViaClass("startScreen");
 	showViaClass("info");
 	hideViaClass("mainSubtitle");
 	showViaClass("infoSubtitle");
@@ -37,8 +40,7 @@ function infoBtn(){
 }
 
 function closeInfo(){
-	showViaClass("topRow");
-	showViaClass("lowRow");
+	showViaClass("startScreen");
 	hideViaClass("info");
 	showViaClass("mainSubtitle");
 	hideViaClass("infoSubtitle");
@@ -47,8 +49,7 @@ function closeInfo(){
 }
 
 function newDbBtn(){
-	hideViaClass("topRow");
-	hideViaClass("lowRow");
+	hideViaClass("startScreen");
 	showViaClass("newDb");
 	hideViaClass("mainSubtitle");
 	showViaClass("newDbSubtitle");
@@ -58,11 +59,16 @@ function newDbBtn(){
 }
 
 function closeNewDb(){
-	showViaClass("topRow");
-	showViaClass("lowRow");
+	showViaClass("startScreen");
 	hideViaClass("newDb");
 	showViaClass("mainSubtitle");
 	hideViaClass("newDbSubtitle");
 	hideViaClass("backBtn");
 	document.getElementById("backBtn").onclick = function() {}
+}
+
+
+function showMainScreen(){
+	showViaClass("designer");
+	hideViaClass("newDb");
 }
