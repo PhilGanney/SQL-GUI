@@ -24,19 +24,22 @@
 		-->
 		<div id="titleBar" class="">
 			<h1>SQL GUI</h1>
-			<h2 id="mainSubtitle" class="">by Phil Ganney</h2>
-			<h2 id="newDbSubtitle" class="hidden">New Database</h2>
-			<h2 id="infoSubtitle" class="hidden">Info / license</h2>
-			<button type="button" id="backBtn" class="hidden black">Back</button>
+			<h2 id="subtitle" class="">by Phil Ganney</h2>
+			<button type="button" id="backBtn" class="hidden black" onclick="changeScreenBackward()">Back</button>
 		</div>
 		<div id="mainPanel" class="limeBorder">
-			<div id="designer" class="hidden black">The quick brown fox likes cheese</div>
 			<div id="startScreen" class="">
-				<div id="topRow" class=""><button type="button" id="" class="" onclick="newDbBtn()">New<br/>Database</button><button type="button" id="" class="">Load from<br/>browser</button></div>
-				<div id="lowRow" class=""><button type="button" id="" class="">Paste<br/>SQL</button><button type="button" id="infoBtn" class="" onclick="infoBtn()">Info /<br/>license</button></div>
+				<div id="topRow" class=""><button type="button" id="" class="" onclick="changeScreenForward('newDbPg1')">New<br/>Database</button><button type="button" id="" class="">Load from<br/>browser</button></div>
+				<div id="lowRow" class=""><button type="button" id="" class="">Paste<br/>SQL</button><button type="button" id="infoBtn" class="" onclick="changeScreenForward('info')">Info /<br/>license</button></div>
 			</div>
 			<div id="info" class="black hidden extraMargin">Design databases and get the SQL to create those designs. Full Readme <a href="README.md">here</a><br/>Released under a MIT license (a popular license for open source software, where the developer has copyright but lets people use or copy the software, without any warranty, free of charge). Full license available <a href="LICENSE">here</a>.</div>
-			<div id="newDb" class="black hidden extraMargin"><p>In this MVP version we assume you can start making tables in at least First Normal Form (1NF)</p><p>SQL GUI does not force databases into a structure or Normal Form beyond 1NF though you will find tips and reminders aimed at developers who do not frequently do Database Normalisation.</p><p>SQL GUI doesn't connect to a DBMS, you copy the SQL to where it's needed</p><button type="button" id="startDB" class="shortWide" onclick="showMainScreen()">Start</button></div>
+			<div id="newDbPg1" class="black hidden extraMargin"><p>In this MVP version we assume you can start making tables in at least First Normal Form (1NF)</p><p>SQL GUI does not force databases into a structure or Normal Form beyond 1NF though you will find tips and reminders aimed at developers who do not frequently do Database Normalisation.</p><p>SQL GUI doesn't connect to a DBMS, you copy the SQL to where it's needed</p><button type="button" id="startDB" class="shortWide" onclick="changeScreenForward('dbNamer')">Start with a name</button></div>
+			<!-- single line text box template
+			<input id="" type="text"/> 
+			-->
+			<div id="dbNamer" class="hidden black"><input id="" type="text"/></div>
+			<div id="tableDesigner" class="hidden black"></div>
+			<div id="dbOverview" class="hidden black"></div>
 		</div>
 		<div id="bottomBtns" class="hidden"><button type="button" id="newTable" class="" onclick="newTable()">New Table</button></div>
 		<div id="copyright" class="black">Copyright (c) 2022 Phil Ganney</div>
