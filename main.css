@@ -37,9 +37,14 @@ h1, h2{
 	margin: 10px;
 }
 
-.extraMargin{
+#mainPanel div{
 	margin: 8px;
-	
+}
+
+#mainPanel #startScreen, 
+#startScreen #topRow, 
+#startScreen #lowRow{
+	margin: 0px;
 }
 
 .hidden, .hideIfSmallScreen{
@@ -78,6 +83,18 @@ h1, h2{
 #mainPanel button.shortWide{
 	width: 284px;
 	height: 50px;
+}
+#mainPanel button.verify{
+	width: 142px;
+	height: 80px;
+	position: absolute;
+	bottom: 2px;
+}
+#mainPanel button.verify.wrong{
+	left: 8px;
+}
+#mainPanel button.verify.correct{
+	left: 150px;
 }
 
 #mainPanel button.red{
@@ -151,6 +168,11 @@ h1, h2{
 	z-index: 9; /* Puts it in front of anything with a smaller z-index - I've set it to 10 so that that should mean we won't have to change it for a while */
 }
 
+input[type="text"]{
+	font-size: 28px;
+	width: 276px;
+	margin-bottom: 4px;
+}
 
 
 /****NO DEFAULT STYLES AFTER THIS COMMENT!

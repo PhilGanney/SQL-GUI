@@ -17,7 +17,18 @@ var globals = {
 			"subtitle": "New Table"
 		}
 		
+	},
+	"templates" : {
+		"createDb": "CREATE DATABASE nameHere",
+	},
+	"currentDbInGui" : {
+		"dbName": "",
+		"tables": {
+			
+		}
 	}
+	
+	
 }
 
 /*by "via class" we mean by removing or adding a class called "hidden" that sets css display to none
@@ -107,4 +118,97 @@ function changeScreenBackward(){
 	}
 	console.log("changeScreenBackward() finished, mainPanelStack = " + globals.mainPanelStack);
 
+}
+
+/**
+ * Sanitize and encode all HTML in a user-submitted string
+ * https://portswigger.net/web-security/cross-site-scripting/preventing
+ * @param  {String} str  The user-submitted string
+ * @return {String} str  The sanitized string
+ */
+var sanitizeHTML = function (str) {
+	return str.replace(/[^\w. ]/gi, function (c) {
+		return '&#' + c.charCodeAt(0) + ';';
+	});
+};
+
+function addPanel() {
+	//NOT FINISHED - BIT OF A TANGENT
+	//modified from the example at https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
+	// create a new div element
+	const newDiv = document.createElement("div");
+
+	// and give it some content
+	const newContent = document.createTextNode("Hi there and greetings!");
+
+	// add the text node to the newly created div
+	newDiv.appendChild(newContent);
+
+	// add the newly created element and its content into the DOM
+	const currentDiv = document.getElementById("div1");
+	document.body.insertBefore(newDiv, currentDiv);
+}
+
+function createDB(){
+	/*  dbName is inputs id
+	1) take in sanitized version of the users input for database name
+	2) Check that value isn't empty
+	3) Store it somewhere
+	4) show the SQL on screen in initialShowCreateDbSQL 
+		(Useful to give people a moment to check for typos, and any mistakes
+			though admittedly I was originally just thinking do this in case sanitization breaks legit things. As it turns out the <code> element outputs the sanitized input with the appearance of how it looked unsanitized)
+		4b) hide the original text input and the check button
+	5) Displaying buttons for what next, and give them onclick functions
+		5a) wrong - 
+			5a1) set the text of the <code> element back to "CREATE DATABASE ..."
+			5a2) show the input box again
+			5a3) show the check code button again
+			5a4) hide the verify buttons again
+		5b) correct - changeScreenForward("tableDesigner")
+	*/
+	console.log("createDB() started");
+	//1)
+	let dbNameElem = document.getElementById("dbName");
+	let dbName = sanitizeHTML(dbNameElem.value);
+	
+	console.log("dbName = " + dbName);
+	//2)
+	if (dbName == ""){
+		alert("SQL GUI needs a name for the Database even if you don't use the create database code");
+		console.log("alert for empty string");
+		return;
+	}
+	//3)
+	globals.currentDbInGui.dbName = dbName;
+	
+	//4
+	document.getElementById("initialShowCreateDbSQL").innerHTML = "CREATE DATABASE " + dbName + ";";
+	
+	//4b
+	hideViaClass("dbName");
+	hideViaClass("createDbSQL");
+	
+	//5a
+	showViaClass("createDbSqlLooksWrong");
+	document.getElementById("createDbSqlLooksWrong").onclick = function() {
+		//5a1 - set the text of the <code> element back to "CREATE DATABASE ..."
+		document.getElementById("initialShowCreateDbSQL").innerHTML = "CREATE DATABASE ..."
+		//5a2
+		showViaClass("dbName");
+		//5a3
+		showViaClass("createDbSQL");
+		//5a4
+		hideViaClass("createDbSqlLooksWrong");
+		hideViaClass("createDbSqlLooksCorrect");
+	} 
+
+	//5b
+	showViaClass("createDbSqlLooksCorrect");
+	document.getElementById("createDbSqlLooksCorrect").onclick = function() {changeScreenForward("tableDesigner");} 
+			//5c  show dbCreateConfirmP1
+		showViaClass("dbCreateConfirmP1");
+		//5d show dbCreateConfirmP2
+		showViaClass("dbCreateConfirmP2");		
+		//5e set the innerText of the span checkDbName 
+		document.getElementById("checkDbName").innerText = dbName;
 }
