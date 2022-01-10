@@ -154,6 +154,7 @@ function createDB(){
 	1) take in sanitized version of the users input for database name
 	2) Check that value isn't empty
 	3) Store it somewhere
+	
 	4) show the SQL on screen in initialShowCreateDbSQL 
 		(Useful to give people a moment to check for typos, and any mistakes
 			though admittedly I was originally just thinking do this in case sanitization breaks legit things. As it turns out the <code> element outputs the sanitized input with the appearance of how it looked unsanitized)
@@ -205,10 +206,4 @@ function createDB(){
 	//5b
 	showViaClass("createDbSqlLooksCorrect");
 	document.getElementById("createDbSqlLooksCorrect").onclick = function() {changeScreenForward("tableDesigner");} 
-			//5c  show dbCreateConfirmP1
-		showViaClass("dbCreateConfirmP1");
-		//5d show dbCreateConfirmP2
-		showViaClass("dbCreateConfirmP2");		
-		//5e set the innerText of the span checkDbName 
-		document.getElementById("checkDbName").innerText = dbName;
 }
