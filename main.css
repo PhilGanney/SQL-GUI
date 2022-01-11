@@ -74,10 +74,41 @@ h1, h2{
 	font-family: sans-serif;
 }
 
+/*Some screens/pannels such as add new table, allow the user to add rows into them
+	as such, will require scrolling on the y axis, and some extra styling design in this style sheet, to prevent knock on problems*/
+.overflowYScroll{
+	overflow-y: scroll;
+	overflow-x: clip; 
+}
+
+#mainPanel div.overflowYScroll{
+	width: 291px;
+	height: 291px;
+}
+
+#mainPanel div.overflowYScroll input[type="text"]{
+	width: 264px;
+	margin-right: 2px;
+}
+#mainPanel div.overflowYScroll button.form{
+	width: 272px;
+	margin-right: 2px;
+}
+
 #mainPanel button{
 	width: 150px;
 	height: 150px;
 	font-size: 20pt;
+}
+
+#mainPanel button.initial{
+	width: initial;
+	height: initial;
+}
+
+#mainPanel button.form{
+	width: 284px;
+	height: initial;
 }
 
 #mainPanel button.shortWide{

@@ -38,8 +38,11 @@
 			<input id="" type="text"/> 
 			-->
 			<div id="dbNamer" class="hidden black"><p>We'll include SQL for creating the DB with this name, as well as using this name if you use our browser local storage save feature</p><code id="initialShowCreateDbSQL">CREATE DATABASE ...</code><input id="dbName" type="text" class=""/><button type="button" id="createDbSQL" class="shortWide" onclick="createDB()">Check this</button><button type="button" id="createDbSqlLooksWrong" class="hidden verify wrong">Looks<br/>Wrong</button><button type="button" id="createDbSqlLooksCorrect" class="hidden verify correct">Looks<br/>Correct</button></div>
-			<div id="tableDesigner" class="hidden black">
-				
+			<div id="tableDesigner" class="hidden black overflowYScroll">
+				<label for="tableNameInput">Table name</label> <input id="tableNameInput" name="tableNameInput" type="text"/> 
+				<label for="field1NameInput">Field 1 name</label> <input id="field1NameInput" name="field1NameInput" type="text"/> 
+				<label for="field1TypeSelect">Field 1 type</label> <select id="field1TypeSelect" name="field1TypeSelect"></select> 
+				<button type="button" id="addFieldBtn" class="form">Add Field</button>
 			</div>
 			<div id="dbOverview" class="hidden black"></div>
 		</div>
