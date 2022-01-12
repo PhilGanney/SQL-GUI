@@ -207,3 +207,51 @@ function createDB(){
 	showViaClass("createDbSqlLooksCorrect");
 	document.getElementById("createDbSqlLooksCorrect").onclick = function() {changeScreenForward("tableDesigner");} 
 }
+
+function genTypeChange(){
+	//field1GeneralTypeSelect
+	let generalType = document.getElementById("field1GeneralTypeSelect").value;
+	if (generalType == "Date/Time"){
+		document.getElementById("field1SpecificTypeSelect").innerHTML =  `
+		<option value="DATE">DATE</option>
+		<option value="DATETIME">DATETIME</option>
+		<option value="TIMESTAMP">TIMESTAMP</option>
+		<option value="TIME">TIME</option>
+		<option value="YEAR">YEAR</option>
+		`;
+	} else if (generalType == "Strings/Enums/Blobs"){
+		document.getElementById("field1SpecificTypeSelect").innerHTML = `
+			<option value="CHAR">CHAR</option>
+			<option value="VARCHAR">VARCHAR</option>
+			<option value="BINARY">BINARY</option>
+			<option value="VARBINARY">VARBINARY</option>
+			<option value="TINYBLOB">TINYBLOB</option>
+			<option value="TINYTEXT">TINYTEXT</option>
+			<option value="TEXT">TEXT</option>
+			<option value="BLOB">BLOB</option>
+			<option value="MEDIUMTEXT">MEDIUMTEXT</option>
+			<option value="MEDIUMBLOB">MEDIUMBLOB</option>
+			<option value="LONGTEXT">LONGTEXT</option>
+			<option value="LONGBLOB">LONGBLOB</option>
+			<option value="ENUM">ENUM</option>
+			<option value="SET">SET</option>
+		`;
+	} else if (generalType == "Numeric"){
+		document.getElementById("field1SpecificTypeSelect").innerHTML = `
+			<option value="BIT">BIT</option>
+			<option value="TINYINT">TINYINT</option>
+			<option value="BOOL">BOOL</option>
+			<option value="BOOLEAN">BOOLEAN</option>
+			<option value="SMALLINT">SMALLINT</option>
+			<option value="MEDIUMINT">MEDIUMINT</option>
+			<option value="INT">INT</option>
+			<option value="INTEGER">INTEGER</option>
+			<option value="BIGINT">BIGINT</option>
+			<option value="FLOAT">FLOAT</option>
+			<option value="DOUBLE">DOUBLE</option>
+			<option value="DOUBLE PRECISION">DOUBLE PRECISION</option>
+			<option value="DECIMAL">DECIMAL</option>
+			<option value="DEC">DEC</option>
+		`;
+	} 
+}

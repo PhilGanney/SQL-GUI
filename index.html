@@ -41,7 +41,20 @@
 			<div id="tableDesigner" class="hidden black overflowYScroll">
 				<label for="tableNameInput">Table name</label> <input id="tableNameInput" name="tableNameInput" type="text"/> 
 				<label for="field1NameInput">Field 1 name</label> <input id="field1NameInput" name="field1NameInput" type="text"/> 
-				<label for="field1TypeSelect">Field 1 type</label> <select id="field1TypeSelect" name="field1TypeSelect"></select> 
+				<label for="field1GeneralTypeSelect">General type</label> 
+				<select id="field1GeneralTypeSelect" name="field1GeneralTypeSelect" onchange="genTypeChange()">
+					<option value="Date/Time">Date/Time</option>
+					<option value="Strings/Enums/Blobs">Strings/Enums/Blobs</option>
+					<option value="Numeric">Numeric</option>
+				</select>				
+				<label for="field1SpecificTypeSelect">Specific type</label>
+				<select id="field1SpecificTypeSelect" name="field1SpecificTypeSelect">
+					<option value="DATE">DATE</option>
+					<option value="DATETIME">DATETIME</option>
+					<option value="TIMESTAMP">TIMESTAMP</option>
+					<option value="TIME">TIME</option>
+					<option value="YEAR">YEAR</option>
+				</select> 
 				<button type="button" id="addFieldBtn" class="form">Add Field</button>
 			</div>
 			<div id="dbOverview" class="hidden black"></div>
