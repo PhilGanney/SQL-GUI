@@ -84,11 +84,16 @@ h1, h2{
 #mainPanel div.overflowYScroll{
 	width: 291px;
 	height: 291px;
+	padding-left: 2px;
+    margin-left: 6px;
 }
 
 #mainPanel div.overflowYScroll input[type="text"]{
 	width: 264px;
 	margin-right: 2px;
+}
+#mainPanel div.overflowYScroll select{
+	margin-bottom: 3px;
 }
 #mainPanel div.overflowYScroll button.form{
 	width: 272px;
