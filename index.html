@@ -47,14 +47,15 @@
 					<option value="Strings/Enums/Blobs">Strings/Enums/Blobs</option>
 					<option value="Numeric">Numeric</option>
 				</select>				
-				<label for="field1SpecificTypeSelect">Specific type</label>
-				<select id="field1SpecificTypeSelect" name="field1SpecificTypeSelect">
+				<label for="field1SpecificTypeSelect">SQL type</label>
+				<select id="field1SpecificTypeSelect" name="field1SpecificTypeSelect" onchange="specificTypeChange(this)">
 					<option value="DATE">DATE</option>
 					<option value="DATETIME">DATETIME</option>
 					<option value="TIMESTAMP">TIMESTAMP</option>
 					<option value="TIME">TIME</option>
 					<option value="YEAR">YEAR</option>
 				</select> 
+				<p id="field1DatatypeDetails">A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'</p>
 				<button type="button" id="addFieldBtn" class="form">Add Field</button>
 			</div>
 			<div id="dbOverview" class="hidden black"></div>

@@ -14,7 +14,45 @@ var globals = {
 			"subtitle": "Name your DB"
 		},
 		"tableDesigner": { //
-			"subtitle": "New Table"
+			"subtitle": "New Table",
+			"dataTypes": {
+				"MySQL": { //Access with: globals.screenData.tableDesigner.dataTypes["MySQL"]
+					"DATE": "A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'",
+					"DATETIME": "A date and time combination. Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time",
+					"TIMESTAMP": "A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition",
+					"TIME": "A time. Format: hh:mm:ss. The supported range is from '-838:59:59' to '838:59:59'",
+					"YEAR": "A year in four-digit format. Values allowed in four-digit format: 1901 to 2155, and 0000. MySQL 8.0 does not support year in two-digit format.",
+					"CHAR": "A FIXED length string (can contain letters, numbers, and special characters). The size parameter specifies the column length in characters - can be from 0 to 255. Default is 1",
+					"VARCHAR": "A VARIABLE length string (can contain letters, numbers, and special characters). The size parameter specifies the maximum column length in characters - can be from 0 to 65535",
+					"BINARY": "Equal to CHAR(), but stores binary byte strings. The size parameter specifies the column length in bytes. Default is 1",
+					"VARBINARY": "Equal to VARCHAR(), but stores binary byte strings. The size parameter specifies the maximum column length in bytes.",
+					"TINYBLOB": "For BLOBs (Binary Large Objects). Max length: 255 bytes",
+					"TINYTEXT": "Holds a string with a maximum length of 255 characters",
+					"TEXT": "Holds a string with a maximum length of 65,535 bytes",
+					"BLOB": "For BLOBs (Binary Large Objects). Holds up to 65,535 bytes of data",
+					"MEDIUMTEXT": "Holds a string with a maximum length of 16,777,215 characters",
+					"MEDIUMBLOB": "For BLOBs (Binary Large Objects). Holds up to 16,777,215 bytes of data",
+					"LONGTEXT": "Holds a string with a maximum length of 4,294,967,295 characters",
+					"LONGBLOB": "For BLOBs (Binary Large Objects). Holds up to 4,294,967,295 bytes of data",
+					"ENUM": "A string object that can have only one value, chosen from a list of possible values. You can list up to 65535 values in an ENUM list. If a value is inserted that is not in the list, a blank value will be inserted. The values are sorted in the order you enter them",
+					"SET": "A string object that can have 0 or more values, chosen from a list of possible values. You can list up to 64 values in a SET list",
+					"BIT": "A bit-value type. The number of bits per value is specified in size. The size parameter can hold a value from 1 to 64. The default value for size is 1.",
+					"TINYINT": "A very small integer. Signed range is from -128 to 127. Unsigned range is from 0 to 255. The size parameter specifies the maximum display width (which is 255)",
+					"BOOL": "Zero is considered as false, nonzero values are considered as true.",
+					"BOOLEAN": "Equal to BOOL",
+					"SMALLINT": "A small integer. Signed range is from -32768 to 32767. Unsigned range is from 0 to 65535. The size parameter specifies the maximum display width (which is 255)",
+					"MEDIUMINT": "A medium integer. Signed range is from -8388608 to 8388607. Unsigned range is from 0 to 16777215. The size parameter specifies the maximum display width (which is 255)",
+					"INT": "A medium integer. Signed range is from -2147483648 to 2147483647. Unsigned range is from 0 to 4294967295. The size parameter specifies the maximum display width (which is 255)",
+					"INTEGER": "Equal to INT(size)",
+					"BIGINT": "A large integer. Signed range is from -9223372036854775808 to 9223372036854775807. Unsigned range is from 0 to 18446744073709551615. The size parameter specifies the maximum display width (which is 255)",
+					"FLOAT": "A floating point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter. This syntax is deprecated in MySQL 8.0.17, and it will be removed in future MySQL versions",
+					"FLOAT": "A floating point number. MySQL uses the p value to determine whether to use FLOAT or DOUBLE for the resulting data type. If p is from 0 to 24, the data type becomes FLOAT(). If p is from 25 to 53, the data type becomes DOUBLE()",
+					"DOUBLE": "A normal-size floating point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter",
+					"DOUBLE PRECISION": "A floating point number that is always stored in 8 bytes. Equivalent to using FLOAT and setting the optional precision to a value that would require using 8 bytes rather than 4.",
+					"DECIMAL": "An exact fixed-point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter. The maximum number for size is 65. The maximum number for d is 30. The default value for size is 10. The default value for d is 0.",
+					"DEC": "Equal to DECIMAL(size,d)",
+				}
+			}
 		}
 		
 	},
@@ -254,4 +292,35 @@ function genTypeChange(){
 			<option value="DEC">DEC</option>
 		`;
 	} 
+	let specificSelectElem = document.getElementById("field1SpecificTypeSelect");
+	specificTypeChange(specificSelectElem);
+}
+
+function specificTypeChange(elChanged){
+	/*	As a select for specific type changes, the description should change with it.
+		descriptions are stored in globals.screenData.tableDesigner.dataTypes[flavour_of_SQL][datatype_name]
+		descriptions need outputting to a p element with id's similar to: field1DatatypeDetails
+			(with the "field1" prefix matching the prefix for the select being changed, and the suffix stays constant)
+		eg:
+			Given:
+				field1SpecificTypeSelect value is changed to "DATETIME" 
+				flavour of SQL being used is "MySQL"
+			Then:
+				document.getElementById("field1DatatypeDetails").innerText = globals.screenData.tableDesigner.dataTypes["MySQL"]["DATETIME"];
+			To make that code work for:	
+				any value that the select is changed to:
+					we swap "DATETIME" for elChanged.value   (elChanged can be passed in via the "this" keyword)
+				
+				other flavours of SQL: (TODO: other SQL versions not yet supported)
+					the JSON would need a node for the flavour, in globals.screenData.tableDesigner.dataTypes
+					it would then need all of the datatypes that the SQL flavour has within that
+					we'd also need to ask the user what SQL flavour the DB is, probably in the create DB stage
+						at that choice would need to be stored inside globals.currentDbInGui
+					
+					
+				
+			
+	*/
+	
+	document.getElementById("field1DatatypeDetails").innerText = globals.screenData.tableDesigner.dataTypes["MySQL"][elChanged.value];
 }
