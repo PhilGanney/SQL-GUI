@@ -15,8 +15,11 @@ var globals = {
 		},
 		"tableDesigner": { //
 			"subtitle": "New Table",
+		},
+		"columnDesigner": { //
+			"subtitle": "New Column",
 			"dataTypes": {
-				"MySQL": { //Access with: globals.screenData.tableDesigner.dataTypes["MySQL"]
+				"MySQL": { //Access with: globals.screenData.columnDesigner.dataTypes["MySQL"]
 					"DATE": "A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'",
 					"DATETIME": "A date and time combination. Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1000-01-01 00:00:00' to '9999-12-31 23:59:59'. Adding DEFAULT and ON UPDATE in the column definition to get automatic initialization and updating to the current date and time",
 					"TIMESTAMP": "A timestamp. TIMESTAMP values are stored as the number of seconds since the Unix epoch ('1970-01-01 00:00:00' UTC). Format: YYYY-MM-DD hh:mm:ss. The supported range is from '1970-01-01 00:00:01' UTC to '2038-01-09 03:14:07' UTC. Automatic initialization and updating to the current date and time can be specified using DEFAULT CURRENT_TIMESTAMP and ON UPDATE CURRENT_TIMESTAMP in the column definition",
@@ -297,7 +300,7 @@ function genTypeChange(){
 
 function specificTypeChange(elChanged){
 	/*	As a select for specific type changes, the description should change with it.
-		descriptions are stored in globals.screenData.tableDesigner.dataTypes[flavour_of_SQL][datatype_name]
+		descriptions are stored in globals.screenData.columnDesigner.dataTypes[flavour_of_SQL][datatype_name]
 		descriptions need outputting to a p element with id's similar to: field1DatatypeDetails
 			(with the "field1" prefix matching the prefix for the select being changed, and the suffix stays constant)
 		eg:
@@ -305,13 +308,13 @@ function specificTypeChange(elChanged){
 				field1SpecificTypeSelect value is changed to "DATETIME" 
 				flavour of SQL being used is "MySQL"
 			Then:
-				document.getElementById("field1DatatypeDetails").innerText = globals.screenData.tableDesigner.dataTypes["MySQL"]["DATETIME"];
+				document.getElementById("field1DatatypeDetails").innerText = globals.screenData.columnDesigner.dataTypes["MySQL"]["DATETIME"];
 			To make that code work for:	
 				any value that the select is changed to:
 					we swap "DATETIME" for elChanged.value   (elChanged can be passed in via the "this" keyword)
 				
 				other flavours of SQL: (TODO: other SQL versions not yet supported)
-					the JSON would need a node for the flavour, in globals.screenData.tableDesigner.dataTypes
+					the JSON would need a node for the flavour, in globals.screenData.columnDesigner.dataTypes
 					it would then need all of the datatypes that the SQL flavour has within that
 					we'd also need to ask the user what SQL flavour the DB is, probably in the create DB stage
 						at that choice would need to be stored inside globals.currentDbInGui
@@ -321,5 +324,5 @@ function specificTypeChange(elChanged){
 			
 	*/
 	
-	document.getElementById("field1DatatypeDetails").innerText = globals.screenData.tableDesigner.dataTypes["MySQL"][elChanged.value];
+	document.getElementById("field1DatatypeDetails").innerText = globals.screenData.columnDesigner.dataTypes["MySQL"][elChanged.value];
 }

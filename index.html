@@ -39,8 +39,16 @@
 			-->
 			<div id="dbNamer" class="hidden black"><p>We'll include SQL for creating the DB with this name, as well as using this name if you use our browser local storage save feature</p><code id="initialShowCreateDbSQL">CREATE DATABASE ...</code><input id="dbName" type="text" class=""/><button type="button" id="createDbSQL" class="shortWide" onclick="createDB()">Check this</button><button type="button" id="createDbSqlLooksWrong" class="hidden verify wrong">Looks<br/>Wrong</button><button type="button" id="createDbSqlLooksCorrect" class="hidden verify correct">Looks<br/>Correct</button></div>
 			<div id="tableDesigner" class="hidden black overflowYScroll">
-				<label for="tableNameInput">Table name</label> <input id="tableNameInput" name="tableNameInput" type="text"/> 
-				<label for="field1NameInput">Field 1 name</label> <input id="field1NameInput" name="field1NameInput" type="text"/> 
+				<label for="tableNameInput">Table name</label> <input id="tableNameInput" name="tableNameInput" type="text"/>
+				<div id="tableDesignerFields" class=""> <!-- Container -->
+					<i>No fields yet. You can save the table to the design like this, but will have to add one or more later in order to generate SQL. Tables with no fields are colour coded yellow in SQL GUI</i>
+				</div>
+				<button type="button" id="addFieldBtn" class="form" onclick="changeScreenForward('columnDesigner')">Add Field</button>
+				<button type="button" id="addFieldBtn" class="form">Save Table to Design</button>
+			</div>
+			<div id="columnDesigner" class="hidden black overflowYScroll">
+				 
+				<label for="field1NameInput">Field name</label> <input id="field1NameInput" name="field1NameInput" type="text"/> 
 				<label for="field1GeneralTypeSelect">General type</label> 
 				<select id="field1GeneralTypeSelect" name="field1GeneralTypeSelect" onchange="genTypeChange()">
 					<option value="Date/Time">Date/Time</option>
@@ -56,8 +64,9 @@
 					<option value="YEAR">YEAR</option>
 				</select> 
 				<p id="field1DatatypeDetails">A date. Format: YYYY-MM-DD. The supported range is from '1000-01-01' to '9999-12-31'</p>
-				<button type="button" id="addFieldBtn" class="form">Add Field</button>
+				<button type="button" id="saveFieldBtn" class="form">Save Field</button>
 			</div>
+			
 			<div id="dbOverview" class="hidden black"></div>
 		</div>
 		<div id="bottomBtns" class="hidden"><button type="button" id="newTable" class="" onclick="newTable()">New Table</button></div>

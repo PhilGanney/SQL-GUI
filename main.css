@@ -114,6 +114,7 @@ h1, h2{
 #mainPanel button.form{
 	width: 284px;
 	height: initial;
+	margin-bottom:2px;
 }
 
 #mainPanel button.shortWide{
