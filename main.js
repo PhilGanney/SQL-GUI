@@ -27,12 +27,12 @@ var globals = {
 					"BINARY": "Fixed length binary byte string: sequence of bytes rather than characters. Great for storing non-traditional data such as pictures, and where there's either a set amount of bytes to store every time, or padding can be used. The size parameter specifies the column length in bytes. Default is 1",
 					"VARBINARY": "Variable length binary byte string. Like BINARY, this is great for non-traditional data such as pictures, but this type works well for storing things with unpredictable or variable size. The size parameter specifies the maximum column length in bytes.",
 					"TINYBLOB": "BLOB (Binary Large OBject) with up to 255 bytes of data",
-					"TINYTEXT": "Holds a string with a maximum length of 255 characters",
-					"TEXT": "Holds a string with a maximum length of 65,535 bytes",
+					"TINYTEXT": "A string with a maximum length of 255 characters",
+					"TEXT": "A string with a maximum length of 65,535 bytes",
 					"BLOB": "BLOB (Binary Large OBject) with up to 65,535 bytes of data",
-					"MEDIUMTEXT": "Holds a string with a maximum length of 16,777,215 characters",
+					"MEDIUMTEXT": "A string with a maximum length of 16,777,215 characters",
 					"MEDIUMBLOB": "BLOB (Binary Large OBject) with up to 16,777,215 bytes of data",
-					"LONGTEXT": "Holds a string with a maximum length of 4,294,967,295 characters",
+					"LONGTEXT": "A string with a maximum length of 4,294,967,295 characters",
 					"LONGBLOB": "BLOB (Binary Large OBject) with up to 4,294,967,295 bytes of data",
 					"ENUM": "A string object that can have only one value, chosen from a list of possible values. You can list up to 65535 values in an ENUM list. If a value is inserted that is not in the list, a blank value will be inserted. The values are sorted in the order you enter them",
 					"SET": "A string object that can have 0 or more values, chosen from a list of possible values. You can list up to 64 values in a SET list","BIT": "A bit-value type. The number of bits per value is specified in size. The size parameter can hold a value from 1 to 64. The default value for size is 1.",
@@ -47,9 +47,9 @@ var globals = {
 					"BIGINT": "Big integer. Signed range from -9223372036854775808 to 9223372036854775807. Unsigned range from 0 to 18446744073709551615. Size parameter specifies the maximum display width (which is 255)",
 					"FLOAT": "Floating point number. MySQL uses the value of parameter p to determine whether to use FLOAT or DOUBLE for the resulting data type. If p is from 0 to 24, the data type becomes FLOAT(). If p is from 25 to 53, the data type becomes DOUBLE()",
 					"DOUBLE": "A normal-size floating point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter",
-					"DOUBLE PRECISION": "A floating point number that is always stored in 8 bytes. Equivalent to using FLOAT and setting the optional precision to a value that would require using 8 bytes rather than 4.",
+					"DOUBLE PRECISION": "Floating point number stored in 8 bytes. Equivalent to using FLOAT and setting the optional precision to a value that would require using 8 bytes rather than 4.",
 					"DECIMAL": "An exact fixed-point number. The total number of digits is specified in size. The number of digits after the decimal point is specified in the d parameter. The maximum number for size is 65. The maximum number for d is 30. The default value for size is 10. The default value for d is 0.",
-					"DEC": "Equal to DECIMAL(size,d)",
+					"DEC": "Shorthand for DECIMAL",
 				}
 			}
 		}
